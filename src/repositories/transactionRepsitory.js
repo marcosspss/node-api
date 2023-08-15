@@ -1,11 +1,19 @@
-const transactions = require ('../infra/db/dados')
+const TransactionModel = require('../models/transaction')
+const {startConnection, closeConnection} = require('../infra/db/mongodb')
 
-function create (transaction){
-    transactions.push(transaction)
+class TransactionRepository {
+     async create(Transaction) {
+        console.log( 'Teste')
+        await startConnection()
+        await TransactionModel.create(Transaction)
+        await closeConnection()
+    }
+
+    async findALL() {
+        await startConnection()
+        const transactions = await TransactionModel.find()
+        await closeConnection()
+        return transactions
+    }
 }
-
-function findALL (){
-    return transactions
-}
-
-module.exports = {create,findALL}
+module.exports = TransactionRepository

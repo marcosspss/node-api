@@ -1,7 +1,8 @@
-const repository = require( '../repositories/transactionRepsitory')
+const Repository = require( '../repositories/transactionRepsitory')
 
-function execute (){
-    repository.findALL()
+async function execute (){
+    const repository = new Repository()
+    return await repository.findALL()
 }
 
 module.exports ={execute}

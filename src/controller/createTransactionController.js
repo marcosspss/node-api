@@ -1,17 +1,17 @@
 const createTransactionUseCase = require('../useCases/createTransactionUseCase')
 
-function createTransaction (request,response){
+async function createTransaction (request,response){
     const body = request.body
-    if(!body.id || !body.type || !body.value){
+    if(!body.title || !body.type || !body.category || !body.amount){
     return response.status(400).json({error: "Missing type os Value"})
     }
-    if (transactions.find( t=> t.id ==body.id)){
-    return response.status(400).json({error: "transaction already exists"})    
-    }
+    //if (transactions.find( t=> t.id ==body.id)){
+    //return response.status(400).json({error: "transaction already exists"})    
+    //}
 
 
     
-    createTransactionUseCase.execute(body)
+    await createTransactionUseCase.execute(body)
     return response.status(201).json(body)
     
 }
