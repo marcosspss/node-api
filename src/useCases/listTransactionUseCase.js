@@ -1,4 +1,4 @@
-const Repository = require( '../repositories/transactionRepsitory')
+const Repository = require( '../repositories/transactionRepository')
 
 async function execute (){
     const repository = new Repository()
